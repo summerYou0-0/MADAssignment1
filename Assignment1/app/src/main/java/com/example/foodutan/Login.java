@@ -17,7 +17,7 @@ import com.example.foodutan.databinding.FragmentLoginBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Login extends Fragment {
-
+    private boolean isLoggedIn;
     private loginList loginList;
     FragmentLoginBinding binding;
     EditText email;
@@ -70,9 +70,11 @@ public class Login extends Fragment {
                 if(loginList.checkMailExisted(email)) {
                     if (loginList.attemptLogin(email, password)) {
                         Snackbar sb = Snackbar.make(view, "Login success", Snackbar.LENGTH_SHORT);
+                        isLoggedIn = true;
                         sb.show();
                     } else {
                         Snackbar sb = Snackbar.make(view, "The password is incorrect", Snackbar.LENGTH_SHORT);
+                        isLoggedIn = true;
                         sb.show();
                     }
                 }else {
@@ -86,5 +88,10 @@ public class Login extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+
+    //Use this function to check whether the user logged in or not;
+    public boolean isLoggedIn() {
+        return isLoggedIn;
     }
 }

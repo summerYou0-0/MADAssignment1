@@ -18,7 +18,6 @@ public class RestaurantActivity extends AppCompatActivity {
 
     ActivityRestaurantBinding binding;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +66,10 @@ public class RestaurantActivity extends AppCompatActivity {
                         binding.restaurantImage.setVisibility(View.GONE);
                         binding.listfoodview.setVisibility(View.GONE);
 
+                        Login login = new Login();
                         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                         // Replace the contents of the container with the new fragment
-                        ft.replace(R.id.register_container, new Login());
+                        ft.replace(R.id.register_container, login);
                         // Complete the changes added above
                         ft.commit();
                         Toast.makeText(getApplicationContext(), "not logged in, going to log in page", Toast.LENGTH_LONG).show();
