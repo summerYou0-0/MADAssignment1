@@ -20,3 +20,5 @@ WHAT I WILL DO IN THE MEANTIME
 (B) Checkout button (go to checkout screen)
 (C) View order history button (View logged in customer order history)
 ===============================================================================
+
+Edited on 21/9/2022
