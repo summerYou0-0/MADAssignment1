@@ -4,8 +4,8 @@ import android.database.Cursor;
 import android.database.CursorWrapper;
 import com.example.foodutan.DatabaseSchema.LoginTable;
 
-public class DatabaseCursor extends CursorWrapper{
-    public DatabaseCursor(Cursor cursor) {
+public class LoginCursor extends CursorWrapper{
+    public LoginCursor(Cursor cursor) {
         super(cursor);
     }
 

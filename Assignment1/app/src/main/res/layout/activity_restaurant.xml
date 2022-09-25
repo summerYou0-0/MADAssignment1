@@ -10,12 +10,17 @@
     <FrameLayout
         android:id="@+id/register_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"
+        android:layout_below="@id/navigation_container">
+
+    </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/shortcut_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:id="@+id/navigation_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </FrameLayout>
 
     <ListView
         android:id="@+id/listfoodview"
@@ -26,8 +31,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/restaurantImage"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/navigation_container"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:src="@drawable/facebookavatar" />
@@ -44,5 +50,18 @@
         android:textColor="@color/black"
         android:textSize="34sp" />
 
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/viewCartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end|bottom"
+        android:contentDescription="check out"
+        android:text="Checkout"
+        app:icon="@drawable/ic_shoppingcart"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

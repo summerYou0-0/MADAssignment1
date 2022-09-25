@@ -40,6 +40,8 @@ public class Register extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+
+        //load databases and get the login array list
         loginList = new loginList();
         loginList.load(getActivity());
     }
@@ -57,6 +59,7 @@ public class Register extends Fragment {
         retypepasswordinput = (EditText) view.findViewById(R.id.retypepassinput);
         register = (Button) view.findViewById(R.id.registerButton);
 
+        //doing all kind of validation to prevent the app crashes
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +95,7 @@ public class Register extends Fragment {
 
         });
 
+        //return to the last activity
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

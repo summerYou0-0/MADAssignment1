@@ -13,7 +13,8 @@ import com.example.foodutan.databinding.ActivityMainBinding;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    private boolean isLoggedIn;
+    private String email;
     ActivityMainBinding binding;
 
     @Override
@@ -21,6 +22,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        ShortcutFragment shortcutFragment = new ShortcutFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.navigationBar, shortcutFragment);
+        ft.commit();
+
+        //Get the intent from Cart back button
+        Intent itn = this.getIntent();
+        isLoggedIn = itn.getBooleanExtra("isLoggedIn", false);
+        email = itn.getStringExtra("email");
 
         int[] drawableId = {R.drawable.bakery, R.drawable.bakso, R.drawable.bimbibap, R.drawable.burger,
                 R.drawable.coffee, R.drawable.pizza, R.drawable.shawarma, R.drawable.steakhouse};
@@ -70,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,RestaurantActivity.class);
                 intent.putExtra("name",restaurantName[i]);
                 intent.putExtra("picture",drawableId[i]);
+                intent.putExtra("isLoggedIn", isLoggedIn); //Added to check user logged in or not
+                intent.putExtra("email", email); //Added email if user logged in
 
                intent.putParcelableArrayListExtra("foods", foodList[i]);
                 startActivity(intent);

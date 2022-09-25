@@ -1,5 +1,6 @@
 package com.example.foodutan;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -27,7 +28,9 @@ public class Login extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
+        //setRetainInstance(true);
+
+        //load the login table databases
         loginList = new loginList();
         loginList.load(getActivity());
     }
@@ -43,6 +46,7 @@ public class Login extends Fragment {
         password = (EditText) view.findViewById(R.id.loginpassinput);
         login = (Button) view.findViewById(R.id.loginButton);
 
+        //go to the last activity when pressing the back button
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +54,7 @@ public class Login extends Fragment {
             }
         });
 
+        //A button guide user to register fragment
         binding.regDirectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,14 +72,26 @@ public class Login extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String mail = email.getText().toString();
+
+                //The login successful if email existed and password is correct
                 if(loginList.checkMailExisted(email)) {
                     if (loginList.attemptLogin(email, password)) {
                         Snackbar sb = Snackbar.make(view, "Login success", Snackbar.LENGTH_SHORT);
-                        isLoggedIn = true;
                         sb.show();
+                        isLoggedIn = true; //Used to pass to another fragment
+
+                        //pass values and go to Check Out fragment
+                        Bundle bundle = new Bundle();
+                        bundle.putBoolean("isLoggedIn", isLoggedIn);
+                        bundle.putString("email", mail);
+
+                        checkOut checkout = new checkOut();
+                        checkout.setArguments(bundle);
+                        getFragmentManager().beginTransaction().replace(R.id.register_container, checkout).commit();
+
                     } else {
                         Snackbar sb = Snackbar.make(view, "The password is incorrect", Snackbar.LENGTH_SHORT);
-                        isLoggedIn = true;
                         sb.show();
                     }
                 }else {

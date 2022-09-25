@@ -7,11 +7,11 @@ import androidx.annotation.Nullable;
 
 import com.example.foodutan.DatabaseSchema.LoginTable;
 
-public class DatabaseHelper extends SQLiteOpenHelper{
+public class LoginDBHelper extends SQLiteOpenHelper{
     private static final int VERSION = 1;
     private static final String DATABASE_NAME = "foodordering.db";
 
-    public DatabaseHelper(@Nullable Context context) {
+    public LoginDBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
 

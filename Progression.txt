@@ -1,0 +1,12 @@
+Currently progression:
+- Order History schema added in DatabaseSchema 
+(to use it just include com.example.foodUtan.DatabaseSchema.HistoryTable)
+
+- Order History fragment not created
+- Order History xml file not created
+- Order History database not created
+
+Currently working on the show cart for logged in user
+
+if you want to test the order history you can add some code in checkOut.java
+line 194

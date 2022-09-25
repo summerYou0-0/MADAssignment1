@@ -15,9 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class ListFoodAdapter extends ArrayAdapter<Food> {
-
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     public ListFoodAdapter(Context context, ArrayList<Food> foodArrayList) {
@@ -27,7 +28,6 @@ public class ListFoodAdapter extends ArrayAdapter<Food> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
         Food food = getItem(position);
 
         if (convertView == null){
@@ -45,13 +45,11 @@ public class ListFoodAdapter extends ArrayAdapter<Food> {
       //  Button minusBtn = convertView.findViewById(R.id.minusBtn);
 
        foodPic.setImageResource(food.getDrawableId());
-        foodName.setText(food.getFoodName());
+       foodName.setText(food.getFoodName());
        foodPrice.setText("RM" + df.format(food.getFoodPrice()));
-
        //amount.setText("0");
 
 
         return convertView;
     }
-
 }

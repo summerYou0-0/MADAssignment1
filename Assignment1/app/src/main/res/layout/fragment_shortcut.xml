@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShortcutFragment"/>
+    tools:context=".ShortcutFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/homeBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_home" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/transparent_picture" />
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/transparent_picture" />
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/transparent_picture" />
+
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/transparent_picture" />
+
+        <ImageButton
+            android:id="@+id/imageButton8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/transparent_picture" />
+
+        <ImageButton
+            android:id="@+id/imageButton9"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/transparent_picture" />
+
+        <ImageButton
+            android:id="@+id/checkoutBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_checkout" />
+    </LinearLayout>
+</FrameLayout>

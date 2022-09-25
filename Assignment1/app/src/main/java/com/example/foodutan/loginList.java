@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 import android.widget.EditText;
 
 import com.example.foodutan.DatabaseSchema.LoginTable;
@@ -19,7 +18,7 @@ public class loginList {
     public loginList() {}
 
     public void load(Context context) {
-        this.db = new DatabaseHelper(context.getApplicationContext()).getWritableDatabase();
+        this.db = new LoginDBHelper(context.getApplicationContext()).getWritableDatabase();
         loginDat = getDBLoginList();
     }
 
@@ -31,6 +30,7 @@ public class loginList {
         return loginDat.get(num);
     }
 
+    //Check if the email exist in database, if cursor return 1 means true
     public boolean checkMailExisted(EditText email) {
         String mail = email.getText().toString();
         boolean existed = false;
@@ -45,6 +45,7 @@ public class loginList {
         return existed;
     }
 
+    //Check if the email existed, if existed then check if the password is same. If cursor = 1 means the login is success
     public boolean attemptLogin(EditText email, EditText password) {
         String mail = email.getText().toString();
         String pass = password.getText().toString();
@@ -60,6 +61,7 @@ public class loginList {
         return success;
     }
 
+    //add an email and password into database
     public int add(loginData newLoginData) {
         loginDat.add(newLoginData);
 
@@ -73,6 +75,7 @@ public class loginList {
         return loginDat.size() - 1;
     }
 
+    //remove an email - not used
     public void delete(loginData removeLoginData) {
         loginDat.remove(removeLoginData);
         String id = String.valueOf(removeLoginData.getID());
@@ -80,6 +83,7 @@ public class loginList {
         db.execSQL("delete from " + LoginTable.NAME + " where " + LoginTable.Cols.ID + "=" + id + ";");
     }
 
+    //get all the items in database and store in an array list
     public ArrayList<loginData> getDBLoginList() {
         ArrayList<loginData> loginList = new ArrayList<>();
         Cursor cursor = db.query(LoginTable.NAME,
@@ -90,16 +94,16 @@ public class loginList {
                 null,
                 null);
 
-        DatabaseCursor databaseCursor = new DatabaseCursor(cursor);
+        LoginCursor loginCursor = new LoginCursor(cursor);
 
         try {
-            databaseCursor.moveToFirst();
-            while (!databaseCursor.isAfterLast()) {
-                loginList.add(databaseCursor.getLoginDetail());
-                databaseCursor.moveToNext();
+            loginCursor.moveToFirst();
+            while (!loginCursor.isAfterLast()) {
+                loginList.add(loginCursor.getLoginDetail());
+                loginCursor.moveToNext();
             }
         } finally {
-            databaseCursor.close();
+            loginCursor.close();
         }
         return loginList;
     }
